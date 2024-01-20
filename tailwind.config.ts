@@ -8,10 +8,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        'dm-sans': ['DM Sans', 'sans-serif'],
+      },
+      colors: {
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: {
+          default: 'var(--primary)',
+          dark: 'var(--primary-dark)',
+          light: 'var(--primary-light)',
+          content: 'var(--primary-content)',
+        },
+        copy: {
+          default: 'var(--copy)',
+          light: 'var(--copy-light)',
+          lighter: 'var(--copy-lighter)',
+        },
+        'big-dot': 'var(--big-dot)',
+        burger: 'var(--burger)',
+        'burger-active': 'var(--burger-active)',
+        'menu-background': 'var(--menu-background)',
       },
     },
   },

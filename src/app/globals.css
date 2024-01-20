@@ -42,6 +42,11 @@
   --copy-lighter: #ac9fa4;
 }
 
+* {
+  box-sizing: border-box;
+  cursor: none;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;

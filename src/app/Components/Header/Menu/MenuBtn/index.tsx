@@ -12,7 +12,7 @@ function MenuBtn({ open, setOpen }: MenuBtnProps) {
         <button
           className="w-12 h-12 border border-burger rounded-full
        relative data-[active=true]:bg-background data-[active=true]:border-transparent 
-       transition-all duration-500 ease-in-out"
+       transition-all duration-500 ease-in-out cursor-none"
           onClick={() => setOpen(!open)}
           data-active={open}
         >

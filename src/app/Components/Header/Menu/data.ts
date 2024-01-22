@@ -1,4 +1,4 @@
-export const bgHover = ['#292326', '#A8DAF4', '#ABAEDB', '#fafb8d', '#B2DECA']
+export const bgHover = ['#fbfbfb', '#A8DAF4', '#ABAEDB', '#fafb8d', '#B2DECA']
 
 export const FooterLinks = [
   { title: 'Github', link: 'https://github.com/herbert-jr' },

@@ -1,28 +1,12 @@
-'use client'
-
-import gsap from 'gsap'
-import React from 'react'
-
-interface Props {
+interface ContainerProps {
   children: React.ReactNode
 }
 
-function Container({ children }: Props) {
-  const headerRef = React.useRef<HTMLHeadElement>(null)
-
-  React.useEffect(() => {
-    gsap.to(headerRef.current, {
-      y: 0,
-      duration: 0.8,
-      ease: 'sine.out',
-    })
-  }, [])
-
+function Container({ children }: ContainerProps) {
   return (
     <header
-      ref={headerRef}
-      className="fixed w-screen h-20 flex items-center justify-between
-   px-5 z-30 bg-background top-0 left-0 -translate-y-full"
+      className="w-screen h-24 flex items-center justify-between 
+  px-5 fixed top-0 left-0 z-30"
     >
       {children}
     </header>

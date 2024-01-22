@@ -3,6 +3,10 @@
 import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 
+type Effects = {
+  [key: string]: () => void
+}
+
 function BigDot() {
   const [isHover, setIsHover] = useState(false)
   const [elementHover, setElementHover] = useState<HTMLElement | null>(null)
@@ -14,6 +18,49 @@ function BigDot() {
     const bigDot = bigDotRef.current
     const allDataHover = document.querySelectorAll('[data-hover]')
     const dataHover = elementHover?.dataset.hover
+
+    const effects: Effects = {
+      none: () => {
+        const { width, height, left, top } =
+          elementHover?.getBoundingClientRect() as DOMRect
+        const center = {
+          x: left + width / 2,
+          y: top + height / 2,
+        }
+
+        gsap.to(bigDot, {
+          x: center.x - width / 2,
+          y: center.y - height / 2,
+          duration: 1.5,
+          ease: 'elastic',
+          borderRadius: '10%',
+          width,
+          height,
+          opacity: 0,
+          scale: 1,
+        })
+      },
+      burger: () => {
+        const { width, height, left, top } =
+          elementHover?.getBoundingClientRect() as DOMRect
+        const center = {
+          x: left + width / 2,
+          y: top + height / 2,
+        }
+
+        gsap.to(bigDot, {
+          x: center.x - width / 2,
+          y: center.y - height / 2,
+          duration: 1.5,
+          ease: 'elastic',
+          borderRadius: '50%',
+          width,
+          height,
+          opacity: 1,
+          scale: 1.2,
+        })
+      },
+    }
 
     const animateBigDot = (
       e: MouseEvent,
@@ -29,16 +76,24 @@ function BigDot() {
         width: size,
         height: size,
         opacity: 1,
+        scale: 1,
       })
     }
 
     const moveBigDot = (e: MouseEvent) => {
-      animateBigDot(e, bigDotSize, bigDot)
+      if (isHover && dataHover) {
+        const animateBigDotHover = effects[dataHover]
+
+        animateBigDotHover()
+      } else {
+        animateBigDot(e, bigDotSize, bigDot)
+      }
     }
 
     const onHover = (e: MouseEvent) => {
       setIsHover(true)
-      setElementHover(e.target as HTMLElement)
+      const element = e.target as HTMLElement
+      setElementHover(element)
     }
 
     const onHoverOut = () => {

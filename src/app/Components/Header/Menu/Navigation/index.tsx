@@ -5,11 +5,11 @@ import { bgHover } from '../data'
 import FooterNav from './FooterNav'
 import MainNav from './MainNav'
 
-interface NavigationBtnProps {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+interface NavigationProps {
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function Navigation({ setOpen }: NavigationBtnProps) {
+function Navigation({ setToggle }: NavigationProps) {
   const [backgroundHover, setBackgroundHover] = useState<number>(0)
 
   const handleChangeBackground = (index: number): void => {
@@ -19,8 +19,8 @@ function Navigation({ setOpen }: NavigationBtnProps) {
   return (
     <motion.nav
       {...navMotionProps}
-      className="w-full h-auto fixed top-0 left-0 z-40 px-8 text-background
-      flex flex-col justify-center items-start"
+      className="w-full h-auto fixed top-0 left-0 z-20 px-8 text-copy-light
+  flex flex-col justify-center items-start"
     >
       <div
         className="w-full h-[calc(100%+0.75rem)] -rotate-2 -skew-x-2 skew-y-0 
@@ -29,7 +29,7 @@ function Navigation({ setOpen }: NavigationBtnProps) {
         style={{ backgroundColor: bgHover[backgroundHover] }}
       ></div>
       <MainNav
-        setOpen={setOpen}
+        setToggle={setToggle}
         handleChangeBackground={handleChangeBackground}
       />
       <FooterNav />

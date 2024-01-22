@@ -2,16 +2,17 @@
 
 import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import MenuBtn from './MenuBtn'
+import Burger from './Burger'
 import Navigation from './Navigation'
 
 function Menu() {
-  const [open, setOpen] = useState(false)
+  const [toggle, setToggle] = useState(false)
+
   return (
     <>
-      <MenuBtn open={open} setOpen={setOpen} />
+      <Burger isOpen={toggle} onClick={() => setToggle(!toggle)} />
       <AnimatePresence mode="wait">
-        {open && <Navigation setOpen={setOpen} />}
+        {toggle && <Navigation setToggle={setToggle} />}
       </AnimatePresence>
     </>
   )

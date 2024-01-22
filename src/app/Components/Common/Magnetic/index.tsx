@@ -28,8 +28,8 @@ function Magnetic({ children }: MagneticProps) {
       const { height, width, left, top } = element.getBoundingClientRect()
       const x = clientX - (left + width / 2)
       const y = clientY - (top + height / 2)
-      xTo(x * 0.15)
-      yTo(y * 0.15)
+      xTo(x * 0.25)
+      yTo(y * 0.25)
     })
     magnetic.current.addEventListener('mouseleave', () => {
       xTo(0)

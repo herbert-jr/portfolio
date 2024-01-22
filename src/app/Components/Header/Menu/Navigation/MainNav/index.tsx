@@ -4,11 +4,11 @@ import { MainLinks } from '../../data'
 import LinkItem from './LinkItem'
 
 interface MainNavProps {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>
   handleChangeBackground: (index: number) => void
 }
 
-function MainNav({ setOpen, handleChangeBackground }: MainNavProps) {
+function MainNav({ setToggle, handleChangeBackground }: MainNavProps) {
   return (
     <menu
       className="w-full py-8 flex flex-col items-start gap-5 font-dm-sans
@@ -24,7 +24,7 @@ function MainNav({ setOpen, handleChangeBackground }: MainNavProps) {
           <LinkItem
             link={item.link}
             title={item.title}
-            onClick={() => setOpen(false)}
+            onClick={() => setToggle(false)}
             onMouseEnter={() => handleChangeBackground(index + 1)}
             onMouseLeave={() => handleChangeBackground(0)}
           />
